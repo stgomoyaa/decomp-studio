@@ -1,0 +1,57 @@
+{
+  "name": "@decomp-studio/desktop",
+  "productName": "Decomp Studio",
+  "version": "0.0.0",
+  "description": "Desktop studio for Pokemon GBA decomp hackroms",
+  "private": true,
+  "type": "module",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "pnpm typecheck && esbuild src/main.ts --bundle --platform=node --target=node22 --format=esm --external:electron --outfile=dist/main.js --sourcemap && esbuild src/preload.ts --bundle --platform=node --target=node22 --format=cjs --external:electron --outfile=dist/preload.cjs --sourcemap",
+    "dist": "electron-builder",
+    "dist:dir": "electron-builder --dir",
+    "dev": "pnpm --filter @decomp-studio/web dev & pnpm exec wait-on http://127.0.0.1:5173 && cross-env HACKROM_STUDIO_DEV_SERVER_URL=http://127.0.0.1:5173 electron .",
+    "start": "electron .",
+    "typecheck": "tsc -b --noEmit"
+  },
+  "build": {
+    "appId": "cl.hackromstudio.app",
+    "productName": "Decomp Studio",
+    "artifactName": "Hackrom-Studio-${version}-${os}-${arch}.${ext}",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "package.json",
+      {
+        "from": "../web/dist",
+        "to": "web/dist",
+        "filter": ["**/*"]
+      }
+    ],
+    "asar": true,
+    "npmRebuild": false,
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": ["dmg", "zip"]
+    },
+    "win": {
+      "target": ["nsis"]
+    },
+    "linux": {
+      "target": ["AppImage"],
+      "category": "Development"
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@decomp-studio/server": "workspace:*",
+    "@types/node": "^24.10.1",
+    "cross-env": "^10.1.0",
+    "electron": "^38.5.0",
+    "electron-builder": "^26.0.12",
+    "esbuild": "^0.28.1",
+    "wait-on": "^9.0.3"
+  }
+}

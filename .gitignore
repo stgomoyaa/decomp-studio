@@ -1,0 +1,40 @@
+# ROMs y saves — nunca commitear ni distribuir
+*.gba
+*.nds
+*.sav
+*.ss0
+**/*.gba
+**/*.nds
+**/*.sav
+**/*.ss0
+roms/
+
+# Hacks de referencia y patches de terceros (no son nuestros para redistribuir)
+examples/
+*.ups
+*.bps
+**/*.ups
+**/*.bps
+
+# Proyectos hackrom de usuario (contienen source decomp + builds)
+projects/
+
+# Node
+node_modules/
+dist/
+**/dist/
+release/
+**/release/
+.turbo/
+coverage/
+*.tsbuildinfo
+
+# Local
+.env
+.env.*
+.DS_Store
+*.log
+*.db
+*.sqlite
+.claude/
+hackrom-aio-todo.md
