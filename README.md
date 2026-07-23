@@ -5,9 +5,11 @@ A local, cross-platform toolkit for building Pokemon GBA hackroms on top of
 editing game data, building, and launching an emulator, with a shared core
 that a UI, a CLI, and (planned) an MCP server all drive.
 
-> Status: pre-alpha. The core engine and the pokeemerald adapter are in place;
-> the desktop UI and the MCP server are still being built. Expect breaking
-> changes. See [ROADMAP.md](ROADMAP.md) for milestones.
+> **Status: pre-alpha — published as an architecture showcase.** The core engine
+> and the pokeemerald adapter are in place; the desktop UI and the MCP server
+> are still being built. This repo is public to document the design decisions
+> (shared core, adapter pattern, legal policy around ROMs) more than to ship a
+> finished product. See [ROADMAP.md](ROADMAP.md) for milestones.
 
 ## Why
 
